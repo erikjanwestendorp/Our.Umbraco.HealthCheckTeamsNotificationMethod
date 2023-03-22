@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Teams.WebHooks" Version="1.0.0" />
     <PackageReference Include="Umbraco.Cms" Version="11.2.1" />
   </ItemGroup>
 
