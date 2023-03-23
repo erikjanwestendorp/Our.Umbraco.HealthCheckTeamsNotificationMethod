@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Options;
+using Teams.WebHooks;
 using Umbraco.Cms.Core.Configuration.Models;
 using Umbraco.Cms.Core.HealthChecks;
 using Umbraco.Cms.Core.HealthChecks.NotificationMethods;
@@ -25,8 +26,53 @@ public class TeamsNotificationMethod : NotificationMethodBase
         }
     }
 
-    public override Task SendAsync(HealthCheckResults results)
+    public override async Task SendAsync(HealthCheckResults results)
     {
-        throw new NotImplementedException();
+        var endPoint = WebHookUrl;
+
+
+        var healthCheckResults = results.GetResultsForStatus(StatusResultType.Error);
+
+        var cards = new List<Message>();
+
+        if (healthCheckResults == null)
+        {
+            return;
+        }
+
+        foreach (var healthCheckResult in healthCheckResults)
+        {
+            var card = new Message { Summary = healthCheckResult.Key };
+
+
+            cards.Add(new Message
+            {
+                Summary = healthCheckResult.Key
+            });
+
+            foreach (var val in healthCheckResult.Value)
+            {
+                card.Sections.Add(new Section
+                {
+                    ActivityTitle = val.Message,
+                    ActivityImage = "https://umbraco.com/media/ziikdjap/umbraco_social_og.png",
+                    Facts = new List<Fact>
+                    {
+                        new Fact
+                        {
+                            Name = "message",
+                            Value = val.Message
+                        }
+                    }
+
+                });
+            }
+            cards.Add(card);
+        }
+
+        foreach (var message in cards)
+        {
+            await MessageClient.SendAsync(endPoint, message);
+        }
     }
 }
