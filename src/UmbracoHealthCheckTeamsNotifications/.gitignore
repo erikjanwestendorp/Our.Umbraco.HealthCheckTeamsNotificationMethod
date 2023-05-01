@@ -480,3 +480,5 @@ appsettings-schema.*.json
 
 # AppSettings
 appsettings.Development.json
+
+**/Smidge/Cache/
