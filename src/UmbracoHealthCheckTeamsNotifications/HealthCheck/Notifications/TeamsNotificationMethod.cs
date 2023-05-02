@@ -28,9 +28,6 @@ public class TeamsNotificationMethod : NotificationMethodBase
 
     public override async Task SendAsync(HealthCheckResults results)
     {
-        var endPoint = WebHookUrl;
-
-
         var healthCheckResults = results.GetResultsForStatus(StatusResultType.Error);
 
         var cards = new List<Message>();
@@ -42,37 +39,37 @@ public class TeamsNotificationMethod : NotificationMethodBase
 
         foreach (var healthCheckResult in healthCheckResults)
         {
-            var card = new Message { Summary = healthCheckResult.Key };
-
-
-            cards.Add(new Message
+            if (healthCheckResult.Value.Any())
             {
-                Summary = healthCheckResult.Key
-            });
+                var card = new Message { Summary = healthCheckResult.Key };
+                
 
-            foreach (var val in healthCheckResult.Value)
-            {
-                card.Sections.Add(new Section
+                foreach (var val in healthCheckResult.Value)
                 {
-                    ActivityTitle = val.Message,
-                    ActivityImage = "https://umbraco.com/media/ziikdjap/umbraco_social_og.png",
-                    Facts = new List<Fact>
+                    card.Sections.Add(new Section
                     {
-                        new Fact
+                        ActivityTitle = val.Message,
+                        
+                        ActivityImage = "https://umbraco.com/media/ziikdjap/umbraco_social_og.png",
+                        Facts = new List<Fact>
                         {
-                            Name = "message",
-                            Value = val.Message
+                            new()
+                            {
+                                Name = "message",
+                                Value = val.Message
+                            }
                         }
-                    }
 
-                });
+                    });
+                }
+                cards.Add(card);
             }
-            cards.Add(card);
+            
         }
 
         foreach (var message in cards)
         {
-            await MessageClient.SendAsync(endPoint, message);
+            await MessageClient.SendAsync(WebHookUrl, message);
         }
     }
 }
