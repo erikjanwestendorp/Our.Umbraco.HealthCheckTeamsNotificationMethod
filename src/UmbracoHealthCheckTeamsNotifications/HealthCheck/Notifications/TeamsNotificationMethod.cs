@@ -50,12 +50,12 @@ public class TeamsNotificationMethod : NotificationMethodBase
                     {
                         ActivityTitle = val.Message,
                         
-                        ActivityImage = "https://umbraco.com/media/ziikdjap/umbraco_social_og.png",
+                        ActivityImage = Constants.ImageUrl,
                         Facts = new List<Fact>
                         {
                             new()
                             {
-                                Name = "message",
+                                Name = Constants.Message,
                                 Value = val.Message
                             }
                         }
