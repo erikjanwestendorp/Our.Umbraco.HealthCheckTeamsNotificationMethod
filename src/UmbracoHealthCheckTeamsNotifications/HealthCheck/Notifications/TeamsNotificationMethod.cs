@@ -6,7 +6,7 @@ using Umbraco.Cms.Core.HealthChecks.NotificationMethods;
 
 namespace UmbracoHealthCheckTeamsNotifications.HealthCheck.Notifications;
 
-[HealthCheckNotificationMethod("teams")]
+[HealthCheckNotificationMethod(Constants.NotificationMethods.Teams)]
 public class TeamsNotificationMethod : NotificationMethodBase
 {
     public string? WebHookUrl { get; }
