@@ -43,25 +43,8 @@ public class TeamsNotificationMethod : NotificationMethodBase
             {
                 var card = new Message { Summary = healthCheckResult.Key };
                 
-
-                foreach (var val in healthCheckResult.Value)
-                {
-                    card.Sections.Add(new Section
-                    {
-                        ActivityTitle = val.Message,
-                        
-                        ActivityImage = Constants.ImageUrl,
-                        Facts = new List<Fact>
-                        {
-                            new()
-                            {
-                                Name = Constants.Message,
-                                Value = val.Message
-                            }
-                        }
-
-                    });
-                }
+                AddSections(card, healthCheckResult);
+                
                 cards.Add(card);
             }
             
@@ -70,6 +53,27 @@ public class TeamsNotificationMethod : NotificationMethodBase
         foreach (var message in cards)
         {
             await MessageClient.SendAsync(WebHookUrl, message);
+        }
+    }
+
+    private static void AddSections(Message card, KeyValuePair<string, IEnumerable<HealthCheckStatus>> healthCheckStatus)
+    {
+        foreach (var val in healthCheckStatus.Value)
+        {
+            card.Sections.Add(new Section
+            {
+                ActivityTitle = val.Message,
+
+                ActivityImage = Constants.ImageUrl,
+                Facts = new List<Fact>
+                {
+                    new()
+                    {
+                        Name = Constants.Message,
+                        Value = val.Message
+                    }
+                }
+            });
         }
     }
 }
