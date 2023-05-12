@@ -1,7 +1,7 @@
 # HealthCheckTeamsNotificationMethod
 
 
-## appSettings.json
+## appSettings.json 
 ```json
   "Umbraco": {
     "CMS": {
