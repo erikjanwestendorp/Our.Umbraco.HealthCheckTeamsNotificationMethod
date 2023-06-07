@@ -2,6 +2,7 @@
 
 
 ## appSettings.json 
+
 ```json
   "Umbraco": {
     "CMS": {
