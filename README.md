@@ -1,6 +1,5 @@
 # HealthCheckTeamsNotificationMethod
 
-
 ## appSettings.json 
 
 ```json
