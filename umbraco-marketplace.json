@@ -1,0 +1,12 @@
+{
+    "$schema": "https://marketplace.umbraco.com/umbraco-marketplace-schema.json",
+    "Category": "Developer Tools",
+    "Tags": ["Health Checks", "Notifications", "Teams", "Microsoft Teams"],
+    "PackageType": "Package",
+    "LicenseTypes": ["Free"],
+    "AuthorDetails": {
+        "Name": "Erik-Jan Westendorp",
+        "Description": "Umbraco MVP, Umbraco Docs contributor, Umbraco CMS contributor",
+        "ImageUrl": "https://github.com/erikjanwestendorp.png"
+    }    
+}
