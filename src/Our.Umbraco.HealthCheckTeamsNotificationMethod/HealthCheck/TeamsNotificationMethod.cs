@@ -37,18 +37,25 @@ public class TeamsNotificationMethod : NotificationMethodBase
             return;
         }
 
+        var card = new Message
+        {
+            Summary = "Something went wrong",
+            Type = "MessageCard"
+        };
+        
+
         foreach (var healthCheckResult in healthCheckResults)
         {
             if (healthCheckResult.Value.Any())
             {
-                var card = new Message { Summary = healthCheckResult.Key };
 
                 AddSections(card, healthCheckResult);
-
-                cards.Add(card);
+                
             }
 
         }
+
+        cards.Add(card);
 
         foreach (var message in cards)
         {
@@ -62,15 +69,24 @@ public class TeamsNotificationMethod : NotificationMethodBase
         {
             card.Sections.Add(new Section
             {
-                ActivityTitle = val.Message,
-
-                ActivityImage = Constants.ImageUrl,
+                ActivityTitle = healthCheckStatus.Key,
+                Markdown = true,
                 Facts = new List<Fact>
                 {
                     new()
                     {
-                        Name = Constants.Message,
+                        Name = Constants.Facts.Message,
                         Value = val.Message
+                    },
+                    new ()
+                    {
+                        Name = Constants.Facts.ReadMore,
+                        Value = val.ReadMoreLink
+                    },
+                    new()
+                    {
+                        Name = Constants.Facts.ResultType,
+                        Value = val.ResultType.ToString()
                     }
                 }
             });
