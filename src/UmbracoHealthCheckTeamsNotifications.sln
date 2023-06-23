@@ -3,20 +3,29 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UmbracoHealthCheckTeamsNotifications", "UmbracoHealthCheckTeamsNotifications\UmbracoHealthCheckTeamsNotifications.csproj", "{CA6A4F34-D14F-47E0-A58F-2EC31408DC00}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Our.Umbraco.HealthCheckTeamsNotificationMethod.Site", "Our.Umbraco.HealthCheckTeamsNotificationMethod.Site\Our.Umbraco.HealthCheckTeamsNotificationMethod.Site.csproj", "{CA6A4F34-D14F-47E0-A58F-2EC31408DC00}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Our.Umbraco.HealthCheckTeamsNotificationMethod", "Our.Umbraco.HealthCheckTeamsNotificationMethod\Our.Umbraco.HealthCheckTeamsNotificationMethod.csproj", "{57D41F7F-ED3F-4C0D-B1E1-8EB7B8878879}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{CA6A4F34-D14F-47E0-A58F-2EC31408DC00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CA6A4F34-D14F-47E0-A58F-2EC31408DC00}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA6A4F34-D14F-47E0-A58F-2EC31408DC00}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA6A4F34-D14F-47E0-A58F-2EC31408DC00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57D41F7F-ED3F-4C0D-B1E1-8EB7B8878879}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57D41F7F-ED3F-4C0D-B1E1-8EB7B8878879}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57D41F7F-ED3F-4C0D-B1E1-8EB7B8878879}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57D41F7F-ED3F-4C0D-B1E1-8EB7B8878879}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1C249E64-48B3-4645-A3E0-528B7B86381D}
 	EndGlobalSection
 EndGlobal

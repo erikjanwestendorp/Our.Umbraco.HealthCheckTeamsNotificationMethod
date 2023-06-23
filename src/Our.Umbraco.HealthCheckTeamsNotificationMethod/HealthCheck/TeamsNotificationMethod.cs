@@ -1,10 +1,10 @@
 ﻿using Microsoft.Extensions.Options;
 using Teams.WebHooks;
 using Umbraco.Cms.Core.Configuration.Models;
-using Umbraco.Cms.Core.HealthChecks;
 using Umbraco.Cms.Core.HealthChecks.NotificationMethods;
+using Umbraco.Cms.Core.HealthChecks;
 
-namespace UmbracoHealthCheckTeamsNotifications.HealthCheck.Notifications;
+namespace Our.Umbraco.HealthCheckTeamsNotificationMethod.HealthCheck;
 
 [HealthCheckNotificationMethod(Constants.NotificationMethods.Teams)]
 public class TeamsNotificationMethod : NotificationMethodBase
@@ -42,12 +42,12 @@ public class TeamsNotificationMethod : NotificationMethodBase
             if (healthCheckResult.Value.Any())
             {
                 var card = new Message { Summary = healthCheckResult.Key };
-                
+
                 AddSections(card, healthCheckResult);
-                
+
                 cards.Add(card);
             }
-            
+
         }
 
         foreach (var message in cards)
