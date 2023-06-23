@@ -1,1 +1,4 @@
 ﻿/src/.vs
+/src/Our.Umbraco.HealthCheckTeamsNotificationMethod/obj/*
+/src/Our.Umbraco.HealthCheckTeamsNotificationMethod/obj/*
+/src/Our.Umbraco.HealthCheckTeamsNotificationMethod.Site/Properties/launchSettings.json
